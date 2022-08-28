@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+//option go_package = "github.com/slarsson/grpc-app/user";
+option go_package = "./user";
+
+import "google/protobuf/timestamp.proto";
+
+package user;
+
+message User {
+    string id = 1;
+    optional string email = 2;
+
+    message Address {
+        string street = 1;
+        string zip_code = 2;
+    }
+
+    repeated Address addresses = 3;
+
+    google.protobuf.Timestamp created_at = 4;
+    google.protobuf.Timestamp updated_at = 5;
+}
+
+service UserService {
+    rpc Get (Id) returns (User) {};
+    rpc Create (User) returns (User) {};
+}
+
+message Id {
+    string id = 1;
+}

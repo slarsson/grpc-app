@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS users (
+    user_id    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    email      TEXT NOT NULL UNIQUE,
+    updated_at DATETIME NOT NULL,
+    created_at DATETIME NOT NULL
+);
